@@ -1,0 +1,68 @@
+# Google Rust Guidelines
+
+A structured, condensed Markdown edition of [Google's Rust Style Guide](https://google.github.io/styleguide/rustguide.html) and every style guide it builds on: the official [Rust Style Guide](https://doc.rust-lang.org/nightly/style-guide/), the [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/), and the reference pages the Google guide cites (Clippy lints, rustfmt options, language concepts, Comprehensive Rust, platform notes).
+
+Every rule has a stable ID, a normative one-line statement, and (where the source provides them) details, exceptions, rationale, and examples. Prose is condensed; rules are not dropped.
+
+## Layout
+
+| Directory | Source | Rule IDs | What it covers |
+| --- | --- | --- | --- |
+| [`google/`](google/README.md) | [Google Rust Style Guide](https://google.github.io/styleguide/rustguide.html) | `G-<AREA>-NN` | Code organization, ownership, API shape, traits, concurrency, macros, naming, docs, language features, implementation, testing |
+| [`rust-style-guide/`](rust-style-guide/README.md) | [The Rust Style Guide](https://doc.rust-lang.org/nightly/style-guide/) | `RS-<AREA>-NN` | Formatting (what `rustfmt` enforces), naming case conventions, `Cargo.toml`, style editions |
+| [`api-guidelines/`](api-guidelines/README.md) | [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/) | upstream `C-XXX` | Library API design: naming, interoperability, predictability, flexibility, type safety, future proofing |
+| [`references/`](references/README.md) | Pages linked from the Google guide | anchors by name | Clippy lints, rustfmt options and a Google-aligned `rustfmt.toml`, language concepts, Comprehensive Rust naming, C++ guide excerpts, platform notes |
+
+## Precedence
+
+1. **Google Rust Style Guide** wins. Its rules on API design are **binding for library code** and a **strong recommendation for application code** ([G-BG-02](google/01-background-and-scope.md#g-bg-02)).
+2. **Rust Style Guide** and **Rust API Guidelines** apply wherever they don't conflict with the Google guide ([G-BG-01](google/01-background-and-scope.md#g-bg-01)). Rules in those sections carry a **Google note** where Google overrides, narrows, or extends them.
+3. **References** are context for the rules that cite them; they add no rules of their own beyond what the cited pages state.
+
+## Rule format
+
+```markdown
+<a id="g-org-05"></a>
+
+## G-ORG-05 — Don't use glob imports
+
+**Rule:** normative statement (MUST / SHOULD / MAY mirror the source's strength)
+**Applies to:** only when restricted (codebase tag, library code, public API)
+**Details:** sub-rules and conditions
+**Exceptions:** permitted deviations
+**Rationale:** why
+**Google note:** (Rust Style Guide / API Guidelines only) how Google's guide changes this rule
+**Example:** Bad / Good code
+**See also:** related rules, lints, references
+```
+
+Link to any rule with `<file>.md#<lowercase-id>`, e.g. [`google/02-code-organization.md#g-org-05`](google/02-code-organization.md#g-org-05).
+
+### Codebase tags
+
+Some Google rules apply only in specific codebases; they are tagged in **Applies to**:
+
+| Tag | Codebase |
+| --- | --- |
+| `[chrome]` | Chromium |
+| `[Fuchsia]` | Fuchsia |
+| `[android]` | Android |
+
+Untagged rules apply everywhere the guide applies.
+
+## Attribution and licenses
+
+This repository is a condensed, restructured derivative of the works below. Wording has been shortened and reorganized; rules, exceptions and examples are kept. Refer to the originals for authoritative text.
+
+| Work | Copyright | License |
+| --- | --- | --- |
+| [Google Rust Style Guide](https://google.github.io/styleguide/rustguide.html) ([source](https://github.com/google/styleguide)) | Google LLC | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) |
+| [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html) (excerpts) | Google LLC | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) |
+| [The Rust Style Guide](https://doc.rust-lang.org/nightly/style-guide/) ([source](https://github.com/rust-lang/rust/tree/HEAD/src/doc/style-guide)) | The Rust Project Developers | MIT OR Apache-2.0 |
+| [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/) ([source](https://github.com/rust-lang/api-guidelines)) | The Rust Project Developers | MIT OR Apache-2.0 |
+| [Comprehensive Rust](https://google.github.io/comprehensive-rust/) (excerpts) | Google LLC | Text [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), code Apache-2.0 |
+| [Fuchsia docs](https://fuchsia.dev/) and [Google Open Source glossary](https://opensource.google/documentation/reference/glossary) (excerpts) | Google LLC | Text [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), code Apache-2.0 |
+| [Chromium `rust_gtest_interop`](https://chromium.googlesource.com/chromium/src/+/main/testing/rust_gtest_interop/) (excerpts) | The Chromium Authors | BSD-3-Clause |
+| Clippy, rustfmt, Rust Reference, std docs, Rust by Example (excerpts) | The Rust Project Developers | MIT OR Apache-2.0 |
+
+Each file states its exact source URL and license in its header. This project is not affiliated with or endorsed by Google or the Rust Project.
